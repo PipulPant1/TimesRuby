@@ -1,0 +1,13 @@
+{
+    "testrail": {
+        "_comment": "only project_id is optional as it is thought to be used if one needs to create a test runs before running the tests and update it",
+        "domain": "https://fusemachines.testrail.net",
+        "username": "bot_tester@yopmail.com",
+        "password": "test@123",
+        "project_id": "50",
+        "run_id": "6546"
+    },
+    "absolute_data": {
+        "_comment": "While testing one needs to have some pre-structured data to proceed, this may differ in different, log those data here and absolutly try to avoid such approach"
+    }
+}

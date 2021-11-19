@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+metadata:
+    name: classrooom-dev
+profiles: # 	beta can override be used to build, test or deploy configuration.
+    - name: testrail-prod
+      build:
+          artifacts:
+              - image: 887384599564.dkr.ecr.us-east-1.amazonaws.com/fuseclassroom-testrail-prod
+      deploy:
+          kubectl:
+              manifests:
+                  - testrail-prod.yaml

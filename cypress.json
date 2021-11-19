@@ -1,0 +1,17 @@
+{
+    "defaultCommandTimeout": 3000,
+    "requestTimeout": 60000,
+    "video": false,
+    "screenshotOnRunFailure": true,
+    "screenshotsFolder": "screenshots",
+    "videosFolder": "videos",
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "reportDir": "results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+    },
+    "fixturesFolder": "tests/prod/fixtures",
+    "integrationFolder": "tests/prod/integration"
+}

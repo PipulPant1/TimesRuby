@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "cleanup": "rm -fr cypress/reports/mochawesome-html-report",
+    "merge_reports": "mochawesome-merge cypress/reports/mochawesome-report/*.json > output.json",
+    "mochawesome_report": "marge --reportDir cypress/reports/mochawesome-html-report -t Cypress_Test_Report -p Cypress_HMTL_Report -f Cypress_HMTL_Report --timestamp mmddyyyy_HHMMss --charts true output.json",
+    "cy:report": "npm run cleanup && cypress run && npm run merge_reports && npm run mochawesome_report"
+  },
+  "devDependencies": {
+    "cypress": "^8.2.0",
+    "cypress-multi-reporters": "^1.5.0",
+    "cypress-wait-until": "^1.7.1",
+    "mocha": "^9.1.3",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "testrail-api": "^1.3.6"
+  }
+}
