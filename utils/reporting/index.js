@@ -18,10 +18,10 @@ const tr = new Testrail({
 //Get all the testcases id present in the testrail
 GetAllTestCaseIds = async () => {
     let data = []
-    await tr.getCases('6', { suite_id: 1586 }).then((xhr) => {
+    await tr.getCases(assets_data.testrail.project_id, { suite_id: assets_data.testrail.suite_id }).then((xhr) => {
         data = xhr.body
     })
-    let allIds = Object.keys(data).map((key) => data[key].id)
+    let allIds = data.cases.map(key => key.id)
     return allIds
 }
 
@@ -77,9 +77,12 @@ SendReport = async (report = []) => {
     if (report !== undefined && report.length != 0) {
         //Comparing all ids we got with the ids from testrail
         let allIds = await GetAllTestCaseIds()
+        console.log(allIds)
         let new_report = report.filter((r) => {
             if (allIds.includes(parseInt(r.case_id))) return r
         })
+
+        console.log(new_report)
 
         await tr
             .addResultsForCases(assets_data.testrail.run_id, new_report)
@@ -125,6 +128,7 @@ main = (dir_path) => {
         })
     })
     make_synchronus.then(() => {
+        console.log('Final result-->',final_result)
         SendReport(final_result)
         console.info('Sending Report Done..')
     })
