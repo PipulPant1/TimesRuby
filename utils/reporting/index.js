@@ -82,7 +82,7 @@ SendReport = async (report = []) => {
             if (allIds.includes(parseInt(r.case_id))) return r
         })
 
-        console.log(new_report)
+        // console.log(new_report)
 
         await tr
             .addResultsForCases(assets_data.testrail.run_id, new_report)
