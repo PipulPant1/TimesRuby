@@ -1,5 +1,5 @@
-# TimesRuby
-Times Ruby chatbot API test
+# Times Ruby chatbot API test
+
 # SetUp
 # 1. Clone The repo
       https://github.com/Fusemachines/fuseclassroom-testrail.git
@@ -32,10 +32,10 @@ For Formating code
 # How to clean the results folder
     node ./utils/reporting/clean.js
 # Building the docker image
-    docker build --build-arg RUN_ON_SERVER=prod --tag fuseclassroom .
+    docker build --build-arg RUN_ON_SERVER=prod --tag timesRuby .
 # Running the test inside container from iamge
     The default behaviour of image is it will run tests when containerized, so we can just destory the container after the test/process completed
-    docker run --rm fuseclassroom
+    docker run --rm timesRuby
 # Adding New Tests
     We are going to use simple workflow.
 
@@ -57,7 +57,7 @@ If you use VSCODE then it is much easier with the provided GUI support
 # Adding Each "it" Test Conventions
     The C11405 & C11406 is the testrail's case id, should be always seperated by a | symbol and followup with test tile
 
-describe("Login Test", () => {
+describe("API Test", () => {
   it("C11405| This will always pass", () => {
     cy.log("Test Pass");
   });
