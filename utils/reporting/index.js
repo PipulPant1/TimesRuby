@@ -77,7 +77,7 @@ SendReport = async (report = []) => {
     if (report !== undefined && report.length != 0) {
         //Comparing all ids we got with the ids from testrail
         let allIds = await GetAllTestCaseIds()
-        console.log(allIds)
+        // console.log(allIds)
         let new_report = report.filter((r) => {
             if (allIds.includes(parseInt(r.case_id))) return r
         })
@@ -128,7 +128,7 @@ main = (dir_path) => {
         })
     })
     make_synchronus.then(() => {
-        console.log('Final result-->',final_result)
+        // console.log('Final result-->',final_result)
         SendReport(final_result)
         console.info('Sending Report Done..')
     })
