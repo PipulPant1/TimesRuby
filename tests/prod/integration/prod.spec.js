@@ -1,7 +1,9 @@
 /// <reference types="cypress" />
 
 context('Stabby Prod API Test', () => {
+    //Base URL
     const base_URL = 'https://tmia-api.fusemachines.com'
+    //Auto complete Base URL
     const autocomplete_baseURL = 'https://tmia-sayt.fusemachines.com'
 
     it('C393424| Verify Trivia API ', () => {
@@ -10,10 +12,10 @@ context('Stabby Prod API Test', () => {
             url: base_URL + '/api/v1.0/trivia',
         }).should((response) => {
             expect(response.status).to.be.equal(200)
-            cy.log(JSON.stringify(response.body))
         })
     })
-    it('Verify Placeholder API ', () => {
+    it('C393520| Verify Placeholder API ', () => {
+        //Placeholder API
         cy.request({
             method: 'GET',
             url: base_URL + '/api/v1.0/placeholder',
@@ -22,8 +24,8 @@ context('Stabby Prod API Test', () => {
         })
     })
 
-    it('Verify Entry Suggestion API ', () => {
-        //ENTRY SUGGESTION API
+    it('C393521| Verify Entry Suggestion API ', () => {
+        //Entry Suggestion API
         cy.request({
             method: 'GET',
             url: base_URL + '/api/v1.0/entry-suggestions',
@@ -32,7 +34,7 @@ context('Stabby Prod API Test', () => {
         })
     })
 
-    it('Verify Search/Autocomplete API ', () => {
+    it('C393522| Verify Search/Autocomplete API ', () => {
         //SEARCH API
         cy.request({
             method: 'POST',
@@ -52,28 +54,29 @@ context('Stabby Prod API Test', () => {
             },
         }).should((response) => {
             expect(response.status).to.be.equal(200)
-            cy.log(JSON.stringify(response.body))
         })
     })
-    it('Verify Message Handler API ', () => {
-        //Message Handler API
+    it('C393523| Verify Message Handler API ', () => {
+        //Covid Faqs API Test
+        cy.log('**Covid Faqs Message Handler Test**')
         cy.request({
             method: 'POST',
             url: base_URL + '/api/v1.0/message',
-            body: { query: 'hi' },
+            body: { query: 'Can my employer require me to get vaccinated?' },
         }).should((response) => {
             expect(response.status).to.be.equal(200)
-            cy.log(JSON.stringify(response.body))
         })
-        //Response Feedback API
+        //Chitchat  API Test
+        cy.log('**Chitchat Message Handler Test**')
         cy.request({
             method: 'POST',
             url: base_URL + '/api/v1.0/message',
-            body: { query: 'What are the latest updates?' },
+            body: { query: '"What can you do?"' },
         }).should((response) => {
             expect(response.status).to.be.equal(200)
-            cy.log(JSON.stringify(response.body))
         })
+        //QA Message Handler API Test
+        cy.log('**QA Message Handler Test**')
         cy.request({
             method: 'POST',
             url: base_URL + '/api/v1.0/message',
@@ -82,13 +85,32 @@ context('Stabby Prod API Test', () => {
             },
         }).should((response) => {
             expect(response.status).to.be.equal(200)
-            cy.log(JSON.stringify(response.body))
+        })
+        //Gamification API Test
+        cy.log('**Gamification Message Handler Test**')
+        cy.request({
+            method: 'POST',
+            url: base_URL + '/api/v1.0/message',
+            body: {
+                query: 'What are the latest updates?',
+            },
+        }).should((response) => {
+            expect(response.status).to.be.equal(200)
+        })
+        //dataqs API Test
+        cy.log('**Dataqs Message Handler Test**')
+        cy.request({
+            method: 'POST',
+            url: base_URL + '/api/v1.0/message',
+            body: {
+                query: 'How bad is it at California',
+            },
+        }).should((response) => {
+            expect(response.status).to.be.equal(200)
         })
     })
-    ///it("Verify QA Message Handler API ", () => {
-    //QA Message Handler API
-    //});
-    it('Verify Response Feedback API ', () => {
+
+    it('C393524| Verify Response Feedback API ', () => {
         //Response Feedback API
         cy.request({
             method: 'POST',
@@ -103,11 +125,10 @@ context('Stabby Prod API Test', () => {
             },
         }).should((response) => {
             expect(response.status).to.be.equal(201)
-            cy.log(JSON.stringify(response.body))
         })
     })
 
-    it('Verify Conversation Feedback API ', () => {
+    it('C393525| Verify Conversation Feedback API ', () => {
         //Response Feedback API
         cy.request({
             method: 'POST',
@@ -115,7 +136,6 @@ context('Stabby Prod API Test', () => {
             body: { comment: '', rating: 3 },
         }).should((response) => {
             expect(response.status).to.be.equal(201)
-            cy.log(JSON.stringify(response.body))
         })
     })
 })
