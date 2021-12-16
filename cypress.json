@@ -9,7 +9,7 @@
     "reporterOptions": {
         "reportDir": "results",
         "overwrite": false,
-        "html": false,
+        "html": true,
         "json": true
     },
     "fixturesFolder": "tests/prod/fixtures",
